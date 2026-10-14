@@ -3,4 +3,4 @@ Allow: /
 Disallow: /admin.html
 Disallow: /admin
 
-Sitemap: https://lokidoki11.github.io/evstratov-demo/sitemap.xml
+Sitemap: https://lokidoki11.github.io/evstratov-logistics/sitemap.xml

@@ -126,7 +126,7 @@
     const name=form.elements.name.value.trim(),reply=form.elements.reply.value.trim(),msg=form.elements.message.value.trim();
     if(!name||!reply||!msg){return;}
     formError.hidden=true;
-    const body=`Здравствуйте, Сергей!\n\nХочу обсудить перевозку.\n\nИмя: ${name}\nКонтакт: ${reply}\n\n${msg}\n\nЗаявка подготовлена на демонстрационном сайте Евстратова.\n\nДаю согласие ИП Евстратову Сергею Сергеевичу на обработку данных для ответа на обращение по отдельному документу: ${location.origin}/evstratov-demo/consent.html (редакция 12.10.2026).`;
+    const body=`Здравствуйте, Сергей!\n\nХочу обсудить перевозку.\n\nИмя: ${name}\nКонтакт: ${reply}\n\n${msg}\n\nЗаявка подготовлена на демонстрационном сайте Евстратова.\n\nДаю согласие ИП Евстратову Сергею Сергеевичу на обработку данных для ответа на обращение по отдельному документу: ${location.origin}/evstratov-logistics/consent.html (редакция 12.10.2026).`;
     document.getElementById('request-preview').value=body;
     document.getElementById('email-request').href=`mailto:evstratovcargo@gmail.com?subject=${encodeURIComponent('Расчёт международной доставки')}&body=${encodeURIComponent(body)}`;
     document.getElementById('request-status').textContent='Кнопка email откроет почтовое приложение. Заявка пока не отправлена.';
