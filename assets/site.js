@@ -32,6 +32,7 @@
   }),{threshold:.9});
   document.querySelectorAll('[data-count]').forEach(el=>counterObserver.observe(el));
 
+  if(document.getElementById('loading-progress')){
   let loadingTimeline=null, loadingScroll=null, flightScroll=null, flightTween=null;
   let paused=reduced;
   const pauseButton=document.querySelector('.motion-toggle');
@@ -58,9 +59,9 @@
       gsap.registerPlugin(ScrollTrigger);
       root.classList.add('scroll-scenes');
       const pinTop=()=>document.querySelector('.header').offsetHeight+12;
-      loadingScroll=ScrollTrigger.create({trigger:'.loading-section',start:()=>`top ${pinTop()}px`,end:()=>`+=${innerHeight*1.35}`,pin:true,invalidateOnRefresh:true,onUpdate:self=>{if(!paused)loadingTimeline.progress(self.progress);}});
+      loadingScroll=ScrollTrigger.create({trigger:'.loading-section',start:()=>`top ${pinTop()}px`,end:()=>`+=${innerHeight*.75}`,pin:true,invalidateOnRefresh:true,onUpdate:self=>{if(!paused)loadingTimeline.progress(self.progress);}});
       flightTween=gsap.fromTo('.plane-wrap',{x:()=>-innerWidth*.45,y:65,rotation:-3},{x:()=>innerWidth*.62,y:-75,rotation:-9,ease:'none',paused:true});
-      flightScroll=ScrollTrigger.create({trigger:'.flight-section',start:()=>`top ${pinTop()}px`,end:()=>`+=${innerHeight*.95}`,pin:true,invalidateOnRefresh:true,onRefresh:()=>flightTween.invalidate(),onUpdate:self=>{if(!paused)flightTween.progress(self.progress);}});
+      flightScroll=ScrollTrigger.create({trigger:'.flight-section',start:()=>`top ${pinTop()}px`,end:()=>`+=${innerHeight*.55}`,pin:true,invalidateOnRefresh:true,onRefresh:()=>flightTween.invalidate(),onUpdate:self=>{if(!paused)flightTween.progress(self.progress);}});
       document.fonts.ready.then(()=>ScrollTrigger.refresh());
       window.addEventListener('load',()=>ScrollTrigger.refresh());
     }else{loadingTimeline.progress(.68);}
@@ -81,6 +82,7 @@
     loadingTimeline.progress(p).pause();
   });
 
+  }
   const details=JSON.parse(document.getElementById('detail-data').textContent);
   const detailDialog=document.getElementById('detail-dialog');
   const requestDialog=document.getElementById('request-dialog');
@@ -97,10 +99,11 @@
     dialog.querySelector('.dialog-close').addEventListener('click',()=>dialog.close());
     dialog.addEventListener('click',e=>{if(e.target!==dialog)return;const r=dialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)dialog.close();});
   });
-  function setTopic(topic){const message=document.getElementById('message');if(!message.value)message.value=`Интересует: ${topic}.\nМаршрут: \nГруз, вес или объём: \nЖелаемый срок: `;}
+  function setTopic(topic){const message=document.getElementById('message');if(message&&!message.value)message.value=`Интересует: ${topic}.\nМаршрут: \nГруз, вес или объём: \nЖелаемый срок: `;}
   document.getElementById('detail-contact').addEventListener('click',()=>{setTopic(activeTopic);detailDialog.close();});
   document.querySelectorAll('[data-topic]').forEach(a=>a.addEventListener('click',()=>setTopic(a.dataset.topic)));
   const requestForm=document.getElementById('request-form');
+  if(requestForm){
   const formError=document.getElementById('form-error');
   const validateField=field=>{
     const value=field.value.trim();let error='';
@@ -139,4 +142,5 @@
     try{await navigator.clipboard.writeText(field.value);window.evStats?.track('draft_copy');status.textContent='Текст скопирован. Вставьте его в Telegram или WhatsApp и отправьте Сергею.';document.getElementById('copy-request').textContent='Скопировано';}
     catch{field.focus();field.select();status.textContent='Выделили текст заявки. Скопируйте его сочетанием Ctrl+C или ⌘C.';}
   });
+  }
 })();

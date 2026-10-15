@@ -30,7 +30,7 @@
   // No external trackers, identifiers, form values or network requests.
   const banner=document.createElement('section');
   banner.className='cookie-banner';banner.hidden=true;banner.setAttribute('role','dialog');banner.setAttribute('aria-labelledby','cookie-title');
-  banner.innerHTML='<div><h2 id="cookie-title">Ваш выбор — ваши данные</h2><p>Сохраним настройки в браузере. Тестовая статистика считает действия только на этом устройстве и не отправляет их на сервер. Внешняя аналитика не подключена. <a href="/evstratov-logistics/cookies.html">Подробнее</a></p></div><div class="cookie-actions"><button type="button" class="button button-outline" data-choice="necessary">Только необходимые</button><button type="button" class="button" data-choice="analytics">Разрешить тестовую статистику</button></div><p class="cookie-storage" role="status" hidden></p>';
+  banner.innerHTML='<div><h2 id="cookie-title">Ваш выбор — ваши данные</h2><p>Сохраним настройки в браузере. Тестовая статистика считает действия только на этом устройстве и не отправляет их на сервер. Внешняя аналитика не подключена. <a href="cookies.html">Подробнее</a></p></div><div class="cookie-actions"><button type="button" class="button button-outline" data-choice="necessary">Только необходимые</button><button type="button" class="button" data-choice="analytics">Разрешить тестовую статистику</button></div><p class="cookie-storage" role="status" hidden></p>';
   document.body.append(banner);
   let opener=null;
   const show=focus=>{banner.hidden=false;if(focus)banner.querySelector('button').focus();};
