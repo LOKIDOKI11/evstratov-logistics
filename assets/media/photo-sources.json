@@ -1,0 +1,76 @@
+{
+  "version": 9,
+  "method": "Real photographs with digital AI-assisted branding. No ownership of depicted equipment is implied.",
+  "sources": [
+    {
+      "id": "air",
+      "ru": "Авиа",
+      "en": "Air freight",
+      "author": "Samson Ng · D201@EAL",
+      "title": "Boeing 747-8F",
+      "url": "https://commons.wikimedia.org/wiki/File:Boeing_747-8F.jpg",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
+    },
+    {
+      "id": "road",
+      "ru": "Авто",
+      "en": "Road freight",
+      "author": "Nishat Samadzai",
+      "title": "White semi-truck on highway",
+      "url": "https://unsplash.com/photos/white-semi-truck-on-highway-9rgdubqB9vY",
+      "license": "Unsplash License",
+      "licenseUrl": "https://unsplash.com/license"
+    },
+    {
+      "id": "rail",
+      "ru": "ЖД · экологичные маршруты",
+      "en": "Rail · environment-aware routes",
+      "author": "Marc Ryckaert",
+      "title": "Container Train R01",
+      "url": "https://commons.wikimedia.org/wiki/File:Container_Train_R01.jpg",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
+    },
+    {
+      "id": "sea",
+      "ru": "Морская доставка",
+      "en": "Sea freight",
+      "author": "Murgatroyd49",
+      "title": "NYK Vega, Southampton",
+      "url": "https://commons.wikimedia.org/wiki/File:NYK_Vega,_Southampton.jpg",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
+    },
+    {
+      "id": "multi",
+      "ru": "Мультимодальные · антикризисные поставки",
+      "en": "Multimodal · crisis logistics",
+      "author": "Thomas Dahlstrøm Nielsen",
+      "title": "Container Terminal, Copenhagen",
+      "url": "https://commons.wikimedia.org/wiki/File:Container_Terminal,_Copenhagen.jpg",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
+    },
+    {
+      "id": "customs",
+      "ru": "Таможня и склад",
+      "en": "Customs and warehousing",
+      "author": "Jacques Dillies",
+      "title": "Warehouse shelving with cardboard boxes",
+      "url": "https://unsplash.com/photos/warehouse-shelving-with-cardboard-boxes-jcav1COVvOc",
+      "license": "Unsplash License",
+      "licenseUrl": "https://unsplash.com/license"
+    },
+    {
+      "id": "consulting",
+      "ru": "Консалтинг и обучение",
+      "en": "Consulting and training",
+      "author": "SHAKIL CHOWDHURY",
+      "title": "A room with a desk and a world map on the wall",
+      "url": "https://unsplash.com/photos/a-room-with-a-desk-and-a-world-map-on-the-wall-gXDgElX7t5g",
+      "license": "Unsplash License",
+      "licenseUrl": "https://unsplash.com/license"
+    }
+  ]
+}
