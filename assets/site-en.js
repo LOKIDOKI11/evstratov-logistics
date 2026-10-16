@@ -60,8 +60,10 @@
       root.classList.add('scroll-scenes');
       const pinTop=()=>document.querySelector('.header').offsetHeight+12;
       loadingScroll=ScrollTrigger.create({trigger:'.loading-section',start:()=>`top ${pinTop()}px`,end:()=>`+=${innerHeight*.75}`,pin:true,invalidateOnRefresh:true,onUpdate:self=>{if(!paused)loadingTimeline.progress(self.progress);}});
+      if(document.querySelector('.flight-section')){
       flightTween=gsap.fromTo('.plane-wrap',{x:()=>-innerWidth*.45,y:65,rotation:-3},{x:()=>innerWidth*.62,y:-75,rotation:-9,ease:'none',paused:true});
       flightScroll=ScrollTrigger.create({trigger:'.flight-section',start:()=>`top ${pinTop()}px`,end:()=>`+=${innerHeight*.55}`,pin:true,invalidateOnRefresh:true,onRefresh:()=>flightTween.invalidate(),onUpdate:self=>{if(!paused)flightTween.progress(self.progress);}});
+      }
       document.fonts.ready.then(()=>ScrollTrigger.refresh());
       window.addEventListener('load',()=>ScrollTrigger.refresh());
     }else{loadingTimeline.progress(.68);}

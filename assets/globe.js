@@ -2,7 +2,7 @@
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* ---------- ГЛОБУС ---------- */
-  var cv = document.getElementById('globe'), ctx = cv.getContext('2d'), DPR = Math.min(window.devicePixelRatio || 1, 1.5);
+  var cv = document.getElementById('globe'); if(!cv)return; var ctx = cv.getContext('2d'), DPR = Math.min(window.devicePixelRatio || 1, 1.5);
   var W, H, R, CX, CY, pts = [], land = null;
   function size() {
     W = cv.clientWidth; H = cv.clientHeight; cv.width = W * DPR; cv.height = H * DPR; ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
@@ -30,7 +30,7 @@
   }
   pts = all.filter(function (_, i) { return i % 3 === 0; }).map(function (p) { return v3(p[0], p[1]); });
   function loadLand() { if (!window.topojson) return;
-    fetch('assets/land.json').then(function (r) { return r.json(); })
+    fetch(document.documentElement.lang==='en'?'../assets/land.json':'assets/land.json').then(function (r) { return r.json(); })
       .then(function (t) { setTimeout(function () { buildLand(topojson.feature(t, t.objects.land)); }, 50); }).catch(function () {});
   }
   window.addEventListener('load', function () { setTimeout(loadLand, 600); });
@@ -72,25 +72,29 @@
     ARCS.forEach(function (a, k) {
       var A = v3(CITIES[a[0]][0], CITIES[a[0]][1]), B = v3(CITIES[a[1]][0], CITIES[a[1]][1]);
       var ph = ((t * 0.25 + k * 0.17) % 1.4);
-      ctx.lineWidth = 1.6;
+      ctx.lineWidth = cv.dataset.route===a.join('-') ? 2.7 : 1.6;
       for (var s = 0; s < 60; s++) {
         var u = s / 60, p1 = proj(slerp(A, B, u)), p2 = proj(slerp(A, B, u + 1 / 60));
         if (p1[2] < -0.1) continue;
         var lit = Math.max(0, 1 - Math.abs(u - ph + 0.2) * 5);
-        ctx.strokeStyle = 'rgba(171,248,38,' + (0.18 + lit * 0.82) + ')';
+        ctx.strokeStyle = 'rgba(171,248,38,' + ((cv.dataset.route&&cv.dataset.route!==a.join('-')?.1:.35) + lit * .65) + ')';
         ctx.beginPath(); ctx.moveTo(p1[0], p1[1]); ctx.lineTo(p2[0], p2[1]); ctx.stroke();
       }
     });
     // города
+    if(document.documentElement.lang==='en'){CITIES.msk[2]='MOSCOW';CITIES.szx[2]='SHENZHEN';CITIES.ist[2]='ISTANBUL';CITIES.waw[2]='WARSAW';CITIES.de[2]='GERMANY';CITIES.kz[2]='KAZAKHSTAN';}
     ctx.font = '600 10px JetBrains Mono, monospace';
-    ['msk','szx','ist','uae'].forEach(function (c) {
+    var labelRects=[];
+    ['szx','msk','ist','de','waw','kz'].forEach(function (c) {
       var p = proj(v3(CITIES[c][0], CITIES[c][1])); if (p[2] < 0.05) return;
       ctx.fillStyle = '#abf826'; ctx.beginPath(); ctx.arc(p[0], p[1], 3.5, 0, 7); ctx.fill();
       ctx.strokeStyle = 'rgba(171,248,38,.4)'; ctx.beginPath(); ctx.arc(p[0], p[1], 7 + Math.sin(t * 3) * 2, 0, 7); ctx.stroke();
-      var w = ctx.measureText(CITIES[c][2]).width + 12; if(p[0]+w+25>W || p[1]<15) return;
-      ctx.fillStyle = 'rgba(5,5,7,.75)'; ctx.fillRect(p[0] + 10, p[1] - 9, w, 18);
-      ctx.strokeStyle = 'rgba(255,255,255,.25)'; ctx.strokeRect(p[0] + 10, p[1] - 9, w, 18);
-      ctx.fillStyle = '#f3f3f1'; ctx.fillText(CITIES[c][2], p[0] + 16, p[1] + 4);
+      var w=ctx.measureText(CITIES[c][2]).width+12, options=[[10,-9],[-w-10,-9],[10,15],[-w-10,15],[10,-33]], label=null;
+      options.some(function(o){var r=[p[0]+o[0],p[1]+o[1],w,18];if(r[0]<2||r[1]<2||r[0]+w>W-2||r[1]+18>H-2)return false;if(labelRects.some(function(q){return r[0]<q[0]+q[2]+4&&r[0]+r[2]+4>q[0]&&r[1]<q[1]+q[3]+4&&r[1]+r[3]+4>q[1];}))return false;label=r;return true;});
+      if(!label)return;labelRects.push(label);
+      ctx.fillStyle='rgba(5,5,7,.85)';ctx.fillRect(label[0],label[1],w,18);
+      ctx.strokeStyle='rgba(255,255,255,.25)';ctx.strokeRect(label[0],label[1],w,18);
+      ctx.fillStyle='#f3f3f1';ctx.fillText(CITIES[c][2],label[0]+6,label[1]+13);
     });
   }
   var visible = true, last = 0;

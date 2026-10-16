@@ -18,3 +18,6 @@ Transport and workspace visuals now use real licensed source photographs with AI
 
 
 Revision 10: road photo replaced with a real European Scania cab-over (Kotivalo, CC BY-SA 4.0); air photo replaced with a close-up of Boeing 747-8F nose-door cargo loading (RAF-YYC / Ryan Fenton, CC BY-SA 2.0). Branding-only edits; sources and adaptation licences updated in RU/EN credits.
+
+
+Revision 11: restored home globe with selectable published case routes; portrait and case city photographs reused from the official client website. Flight scene moved from services to air.html. Local demo estimator now visualises volume with boxes, capacity selection and a slider. Contact section unchanged. Price formula remains illustrative, no AI or live tariffs connected.
