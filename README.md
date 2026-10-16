@@ -15,3 +15,6 @@ The estimate uses fictional browser-local coefficients. It has no connected AI m
 ## Photo-based imagery, revision 9
 
 Transport and workspace visuals now use real licensed source photographs with AI-assisted paint/branding edits based on the client Boeing 747-8F livery passport. Sources, authors, changes and licence links are in credits.html, en/credits.html and assets/media/photo-sources.json. CC BY-SA photographic adaptations retain that licence; trademark rights are separate. Original source photographs and the private project passport are not bundled in this repository.
+
+
+Revision 10: road photo replaced with a real European Scania cab-over (Kotivalo, CC BY-SA 4.0); air photo replaced with a close-up of Boeing 747-8F nose-door cargo loading (RAF-YYC / Ryan Fenton, CC BY-SA 2.0). Branding-only edits; sources and adaptation licences updated in RU/EN credits.

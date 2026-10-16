@@ -1,26 +1,26 @@
 {
-  "version": 9,
+  "version": 10,
   "method": "Real photographs with digital AI-assisted branding. No ownership of depicted equipment is implied.",
   "sources": [
     {
       "id": "air",
       "ru": "Авиа",
       "en": "Air freight",
-      "author": "Samson Ng · D201@EAL",
-      "title": "Boeing 747-8F",
-      "url": "https://commons.wikimedia.org/wiki/File:Boeing_747-8F.jpg",
-      "license": "CC BY-SA 4.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
+      "author": "RAF-YYC / Ryan Fenton",
+      "title": "Loading of a Boeing 747-8F of Cargolux (7272164634)",
+      "url": "https://commons.wikimedia.org/wiki/File:Loading_of_a_Boeing_747-8F_of_Cargolux_(7272164634).jpg",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/"
     },
     {
       "id": "road",
       "ru": "Авто",
       "en": "Road freight",
-      "author": "Nishat Samadzai",
-      "title": "White semi-truck on highway",
-      "url": "https://unsplash.com/photos/white-semi-truck-on-highway-9rgdubqB9vY",
-      "license": "Unsplash License",
-      "licenseUrl": "https://unsplash.com/license"
+      "author": "Kotivalo",
+      "title": "White Scania semi-trailer with Freja branding",
+      "url": "https://commons.wikimedia.org/wiki/File:White_Scania_semi-trailer_with_Freja_branding.jpg",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
     },
     {
       "id": "rail",
