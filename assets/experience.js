@@ -23,7 +23,7 @@
  let v=Number(volume.value);if(!Number.isFinite(v)||v<0)v=0;
  slider.max=String(cap);slider.value=String(Math.min(cap,Math.max(.01,v)));
  const fraction=Math.min(1,v/cap),n=Math.ceil(fraction*boxes.length),count=Math.ceil(v/cap);
- boxes.forEach((b,i)=>{b.style.gridRow=String(4-Math.floor(i/8));b.style.gridColumn=String(i%8+1);b.classList.toggle('filled',i<n);b.style.transitionDelay=(i%8)*18+'ms';});
+ boxes.forEach((b,i)=>{b.style.gridRow=String(4-Math.floor(i/8));b.style.gridColumn=String(i%8+1);b.classList.toggle('filled',i<n);b.style.transitionDelay=(document.querySelector('.cargo-model').classList.contains('live-loading')?i*50:(i%8)*18)+'ms';});
  meter.style.width=(fraction*100)+'%';percent.textContent=Math.round(fraction*100)+'%';
  const fmt=x=>x.toLocaleString(en?'en-US':'ru-RU',{maximumFractionDigits:2});
  summary.textContent=fmt(v)+(en?' m³ of ':' м³ из ')+fmt(cap)+(en?' m³':' м³')+(count>1?(en?' · equivalent of ':' · эквивалент ')+count+(en?' units':' ед.'): '');
@@ -33,3 +33,5 @@
  slider.addEventListener('input',()=>update(slider));volume.addEventListener('input',()=>update(volume));weight.addEventListener('input',()=>update(weight));capacity.addEventListener('change',()=>update(capacity));update(volume);
  form.addEventListener('submit',()=>{if(form.checkValidity()){document.querySelector('.estimate-side').classList.remove('calculated');requestAnimationFrame(()=>document.querySelector('.estimate-side').classList.add('calculated'));}});
 })();
+(()=>{const model=document.querySelector('.cargo-model');if(!model)return;document.querySelectorAll('[data-cargo-view]').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('[data-cargo-view]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));model.classList.toggle('live-loading',b.dataset.cargoView==='live');}));})();
+(()=>{const replay=document.getElementById('replay-cargo');if(!replay)return;replay.addEventListener('click',()=>{const boxes=[...document.querySelectorAll('.cargo-boxes .filled')];boxes.forEach(b=>{b.style.transitionDelay='0ms';b.classList.remove('filled');});setTimeout(()=>boxes.forEach((b,i)=>{b.style.transitionDelay=i*50+'ms';b.classList.add('filled');}),80);});})();
